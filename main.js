@@ -225,6 +225,12 @@ const content = [
             "verb", "noun"
         ]
     },
+    {
+        term: "Eat",
+        classes: [
+            "verb"
+        ]
+    },
 ];
 const blacklist = [];
 
