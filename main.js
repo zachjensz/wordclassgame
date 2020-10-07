@@ -338,7 +338,6 @@ function checkAnswer() {
             }
         }
     }
-
     // Finalise
     submitBtn.innerText = "Next Round";
 }
