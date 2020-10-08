@@ -317,6 +317,7 @@ const submitBtn = gameArea.querySelector('.gamearea__submit');
 for(let option = 0; option < options.length; option++) {
     options[option].addEventListener('click', (e) => {
         options[option].classList.toggle('option--selected');
+        checkAnswer();
     });
 }
 
@@ -327,10 +328,8 @@ submitBtn.addEventListener('click', submit);
 function submit() {
     if (submitBtn.innerText === "Start Game") {
         startGame();
-    } else if (submitBtn.innerText === "Next Round") {
+    } else { // Next Round
         loadRound();
-    } else { // Done
-        checkAnswer();
     }
 }
 
