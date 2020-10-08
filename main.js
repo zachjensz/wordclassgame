@@ -1,238 +1,310 @@
-// CONTENT
-const content = [
-    {
-        term: "Jessica Bishop",
-        sentences: [
-            "Jessica Bishop is an excellent teacher"
-        ],
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Apple",
-        sentences: [
-            "He ate an apple", "The tree grew apples", "The apple tree is blossoming", "Apples are a delicious fruit"
-        ],
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Norwood Secondary College",
-        sentences: [
-            "I go to Norwood Secondary College", "Norwood Secondary College is a public secondary school in Ringwood North"
-        ],
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Watermelon",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Pavement",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Microphone",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Morgan Freeman",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Scott Morrisson",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Vehicle",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Celery",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Banana",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Patio",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Cigarette",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Mosquito",
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Vodka",
-        sentences: [
-            "Vodka is an alcoholic spirit", "In Soviet Russia, Vodka drink you"
-        ],
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Conventional Oven",
-        sentences: [
-            "A Conventional Oven is an appliance of the conventional home", "To cook your boneless pizza, preheat your conventional oven to 180 degrees celcius"
-        ],
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Piñata",
-        sentences: [
-            "A piñata is a decorated container often made of papier-mâché, they are filled with candy prior to their savage destruction.", "He smashed the piñata"
-        ],
-        classes: [
-            "noun"
-        ]
-    },
-    {
-        term: "Cook",
-        sentences: [
-            "I will cook you a Zucchini fritter", "I promise I won't cook your pet fish", "The cook was upset"
-        ],
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Speak",
-        sentences: [
-            "She was unable to speak after the donut disaster", "The cockatoo will speak on occasion"
-        ],
-        classes: [
-            "verb"
-        ]
-    },
-    {
-        term: "Make",
-        sentences: [
-            "I made a game on word classes", "I made pumpkin fritters on sunday afternoon", "Make sure the prisoners do not escape", "This pink calculator is our own make"
-        ],
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Spend",
-        sentences: [
-            "He can spend his money on Allen's Jelly Babies", "She spent too much time deciding what word class the lexeme spend belongs to", "I spent my time dusting wooden cat sculptures"
-        ],
-        classes: [
-            "verb"
-        ]
-    },
-    {
-        term: "Win",
-        sentences: [
-            "You could win this game if you play enough", "He won the tiramisu after a year of hardwork", "You won!", "This horse is a sure win isn't it Jimmy"
-        ],
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Follow",
-        sentences: [
-            "The cat follows the bird", "I will follow you home in the dark when you aren't looking", "After sunlight, darkness followed", "He will follow her to the tasmanian frangipani conference", "You get more follows on instagram if you are good looking"
-        ],
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Stop",
-        sentences: [
-            "Please stop puring cranberry juice on the baby", "This is a great stop if you want ice-cream", "Put a stop to Climate Change"
-        ],
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Accept",
-        classes: [
-            "verb"
-        ]
-    },
-    {
-        term: "Achieve",
-        classes: [
-            "verb"
-        ]
-    },
-    {
-        term: "Act",
-        classes: [
-            "noun", "verb"
-        ]
-    },
-    {
-        term: "Avoid",
-        classes: [
-            "verb"
-        ]
-    },
-    {
-        term: "Blacken",
-        classes: [
-            "verb"
-        ]
-    },
-    {
-        term: "Bleed",
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Chase",
-        classes: [
-            "verb", "noun"
-        ]
-    },
-    {
-        term: "Eat",
-        classes: [
-            "verb"
-        ]
-    },
-];
+// Initialise variables
+const op = `<span class="term">`;
+const cl = `</span>`;
+const content = {
+    noun: [
+        {
+            term: "Jessica Bishop",
+            class: "Noun",
+            sentences: [
+                `${op}Jessica Bishop${cl} is an excellent teacher`
+            ],
+        },
+        {
+            term: "Teacher",
+            class: "Noun",
+            sentences: [
+                `Jessica Bishop is an excellent ${op}teacher${cl}`, `The ${op}teacher${cl} ate a zucchini fritter.`
+            ],
+        },
+        {
+            term: "Apple",
+            class: "Noun",
+            sentences: [
+                `He ate an ${op}apple${cl}`, `The tree grew ${op}apples${cl}`, `The ${op}apple${cl} tree is blossoming`, `${op}Apple${cl} are a delicious fruit`
+            ],
+        },
+        {
+            term: "Burrito",
+            class: "Noun",
+            sentences: [
+                `The mexican chld ate a ${op}burrito${cl}`, `All the ${op}burritos${cl} are five dollars sir`, `This ${op}burrito${cl} consists of a tortilla folded over a filling of ground beef, grated cheese, and vegetables.`, `${op}Burritos${cl} are a delicious food`
+            ],
+        },
+        {
+            term: "Norwood Secondary College",
+            class: "Noun",
+            sentences: [
+                `I go to ${op}Norwood Secondary College${cl}`, `${op}Norwood Secondary College${cl} is a public secondary school in Ringwood North`
+            ],
+        },
+        {
+            term: "Watermelon",
+            class: "Noun",
+            sentences: [
+                `Vodka ${op}watermelons${cl} are excellent`, `${op}Watermelon${cl} is a type of melon`, `${op}Watermelons${cl} are a great shooting target for emulating the human body`
+            ],
+        },
+        {
+            term: "Pavement",
+            class: "Noun",
+            sentences: [
+                `The ${op}pavement${cl} is excellent`, `Some ${op}pavements${cl} are referred to as a footpath or sidewalk`, `You can refer to a highway as a ${op}pavement${cl}`
+            ],
+        },
+        {
+            term: "Microphone",
+            class: "Noun",
+            sentences: [
+                `The ${op}microphone${cl} is off`, `This ${op}microphone${cl} is great`
+            ],
+        },
+        {
+            term: "Morgan Freeman",
+            class: "Noun",
+            sentences: [
+                `${op}Morgan Freeman${cl} is a great actor`
+            ],
+        },
+        {
+            term: "Scott Morrisson",
+            class: "Noun",
+            sentences: [
+                `${op}Scott Morrisson${cl} is frequently nicknamed "scomo"`
+            ],
+        },
+        {
+            term: "Vehicle",
+            class: "Noun",
+            sentences: [
+                `The ${op}vehicle${cl} is in excellent condition`, `This ${op}vehicle${cl} was sold to a customer`
+            ],
+        },
+        {
+            term: "Celery",
+            class: "Noun",
+            sentences: [
+                `The ${op}celery${cl} goes in next`
+            ],
+        },
+        {
+            term: "Banana",
+            class: "Noun",
+            sentences: [
+                `The ${op}banana${cl} bender was off work`, `The ${op}bananas${cl} were used for cooking`, `${op}Bananas${cl} are a cheap fruit`
+            ],
+        },
+        {
+            term: "Patio",
+            class: "Noun",
+            sentences: [
+                `The ${op}patio${cl} is flooded`
+            ],
+        },
+        {
+            term: "Cigarette",
+            class: "Noun",
+            sentences: [
+                `The ${op}cigarette${cl} was lit`
+            ],
+        },
+        {
+            term: "Mosquito",
+            class: "Noun",
+            sentences: [
+                `A ${op}mosquito${cl} bit me`, `${op}Mosquitoes${cl} are nicknamed "mozzies" by many Australians`, `I hate ${op}mosquitos${cl}`
+            ],
+        },
+        {
+            term: "Vodka",
+            class: "Noun",
+            sentences: [
+                `${op}Vodka${cl} is an alcoholic spirit`, `In Soviet Russia, ${op}vodka${cl} drink you`, `${op}Vodka${cl} is great for cocktails`
+            ],
+        },
+        {
+            term: "Conventional Oven",
+            class: "Noun",
+            sentences: [
+                `A ${op}conventional oven${cl} is a normal appliance of the home`, `To cook your boneless pizza, preheat your ${op}conventional oven${cl} to 180 degrees celcius`
+            ],
+        },
+        {
+            term: "Piñata",
+            class: "Noun",
+            sentences: [
+                `${op}Piñatas${cl} are a decorated, often papier-mâché container, filled with candy prior to savage destruction`
+            ],
+        },
+        {
+            term: "Cook (noun)",
+            class: "Noun",
+            sentences: [
+                `The ${op}cook${cl} was upset`, `Captain ${op}cook${cl} had a ship`
+            ],
+        },
+        {
+            term: "Make (noun)",
+            class: "Noun",
+            sentences: [
+                `This car is our ${op}make${cl}`, `This pink calculator is our own ${op}make${cl}`
+            ],
+        },
+        {
+            term: "Stop (noun)",
+            class: "Noun",
+            sentences: [
+                `This is a great ${op}stop${cl} if you want ice-cream`
+            ],
+        },
+        {
+            term: "Win (noun)",
+            class: "Noun",
+            sentences: [
+                `This horse is a sure ${op}win${cl} isn't it Jimmy`, `My trip to the casino was a huge ${op}win${cl}`
+            ],
+        },
+        {
+            term: "Follow (noun)",
+            class: "Noun",
+            sentences: [
+                `She got so many ${op}follows${cl} on Instagram`
+            ],
+        },
+        {
+            term: "Act (noun)",
+            class: "Noun",
+            sentences: [
+                `She performed an ${op}act${cl} on the stage`, `His ${op}act${cl} was on frog intoxication`
+            ],
+        },
+        {
+            term: "Bleed (noun)",
+            class: "Noun",
+            sentences: [
+                `He has a ${op}bleed${cl} on his left arm`, `The paper has a ${op}bleed${cl} of a couple centimetres`
+            ],
+        },
+        {
+            term: "Chase (noun)",
+            class: "Noun",
+            sentences: [
+                `It was a great ${op}chase${cl}`, `The ${op}chase${cl} with the kids was great fun`
+            ],
+        }
+    ],
+    verb: [
+        {
+            term: "Speak",
+            class: "Verb",
+            sentences: [
+                `She was unable to ${op}speak${cl} after the donut disaster`, `The cockatoo will ${op}speak${cl} on occasion`
+            ],
+        },
+        {
+            term: "Spend",
+            class: "Verb",
+            sentences: [
+                `He can ${op}spend${cl} his money on Allen's Jelly Babies`, `She spent too much time deciding what word class the lexeme ${op}spend${cl} belongs to`, `I ${op}spent${cl} my time dusting wooden cat sculptures`
+            ],
+        },
+        {
+            term: "Accept",
+            class: "Verb",
+            sentences: [
+                `She ${op}accepted${cl} his apology`, `They ${op}accepted${cl} the giant bird statue was here to stay`, `I ${op}accept${cl} this gift`
+            ],
+        },
+        {
+            term: "Achieve",
+            class: "Verb",
+            sentences: [
+                `They will ${op}achieve${cl} their best`, `They ${op}achieved${cl} so much more`, `I ${op}achieved${cl}`
+            ],
+        },
+        
+        {
+            term: "Avoid",
+            class: "Verb",
+            sentences: [
+                `She ${op}avoided${cl} the goat`, `They ${op}avoided${cl} the giant bird statue`, `I ${op}avoid${cl} swooping magpies`
+            ],
+        },
+        {
+            term: "Blacken",
+            class: "Verb",
+            sentences: [
+                `She will ${op}blacken${cl} the wall with paint`, `They ${op}blacken${cl} her reputation`, `It will ${op}blacken${cl} during nightfall`
+            ],
+        },
+        
+        {
+            term: "Eat",
+            class: "Verb",
+            sentences: [
+                `She will ${op}eat${cl} the whole pizza if you're not careful`, `They ${op}eat${cl} whatever I cook them`, `I ${op}eat${cl} when I'm sad`
+            ],
+        },
+        {
+            term: "Cook (verb)",
+            class: "Verb",
+            sentences: [
+                `I will ${op}cook${cl} you a Zucchini fritter`, `I promise I won't ${op}cook${cl} your pet fish`
+            ],
+        },
+        {
+            term: "Make (verb)",
+            class: "Verb",
+            sentences: [
+                `I ${op}made${cl} a game on word classes`, `I ${op}made${cl} pumpkin fritters on sunday afternoon`, `${op}Make${cl} sure the prisoners do not escape`
+            ],
+        },
+        {
+            term: "Win (verb)",
+            class: "Verb",
+            sentences: [
+                `You could ${op}win${cl} this game if you play enough`, `He ${op}won${cl} the tiramisu after a year of hardwork`, `You ${op}won${cl}`
+            ],
+        },
+        {
+            term: "Follow (verb)",
+            class: "Verb",
+            sentences: [
+                `The cat ${op}follows${cl} the bird`, `I will ${op}follow${cl} you home in the dark when you aren't looking`, `After sunlight, darkness ${op}followed${cl}`, `He will ${op}follow${cl} her to the tasmanian frangipani conference`
+            ],
+        },
+        {
+            term: "Stop (verb)",
+            class: "Verb",
+            sentences: [
+                `Please ${op}stop${cl} puring cranberry juice on the baby`, `Put a ${op}stop${cl} to Climate Change`
+            ],
+        },
+        {
+            term: "Act (verb)",
+            class: "Verb",
+            sentences: [
+                `He ${op}acted${cl} really strange`, `She will ${op}act${cl} out any script you have`
+            ],
+        },
+        {
+            term: "Bleed (verb)",
+            class: "Verb",
+            sentences: [
+                `Please stop ${op}bleeding${cl} sir`, `He will ${op}bleed${cl} if stabbed with a pinapple`
+            ],
+        },
+        {
+            term: "Chase (verb)",
+            class: "Verb",
+            sentences: [
+                `Stop ${op}chasing${cl} the toddler`, `Never ${op}chase${cl} a chicken`
+            ],
+        }
+    ],
+}
 const blacklist = [];
+const level = 1;
 
 // Retrieve Elements
 const gameArea = document.querySelector('.gamearea');
@@ -278,38 +350,30 @@ function loadRound() {
     for(let option = 0; option < options.length; option++) {
         options[option].classList.remove("option--selected");
     }
-    // Set button to Done
-    submitBtn.innerText = "Done";
+    
     // Generate new question
-    randQn = generateQuestion();
-    console.log(blacklist)
-    document.querySelector('.gamearea__currentQuestion').innerText = randQn;
-    term.innerText = content[randQn].term;
-    blacklist.push(randQn)
+    let currentQuestion = generateQuestion();
+    // Update document
+    document.querySelector('.gamearea__correctClass').innerText = currentQuestion.class;
+    let sentenceNo = Math.floor(Math.random() * currentQuestion.sentences.length)
+    term.innerHTML = currentQuestion.sentences[sentenceNo];
+    submitBtn.innerText = "Done";
+    // Blacklist question temporarily
+    blacklist.push(currentQuestion.term)
 }
 
 // Check Answer
 function checkAnswer() {
     // Get Correct Classes
-    let qnno = document.querySelector('.gamearea__currentQuestion').innerText;
-    let correctClasses = content[qnno].classes;
-
-    // Initialise totals
-    let selectedCorrect = [];
-    let selectedIncorrect = [];
-    let unselectedIncorrect = [];
-    let unselectedCorrect = [];
+    let correctClass = document.querySelector('.gamearea__correctClass').innerText.toLowerCase();
     
     // Loop through options
     for(let option = 0; option < options.length; option++) {
         // Check if I am needed
         let needed = false;
-        // Loop through correct classes
-        for(let crntClass = 0; crntClass < correctClasses.length; crntClass++) {
-            if (options[option].id === (correctClasses[crntClass])) {
-                // I am a correct class
-                needed = true;
-            }
+        if (options[option].id === correctClass) {
+            // I am a correct class
+            needed = true;
         }
         // Am I selected or not
         let selected = options[option].classList.contains('option--selected');
@@ -318,7 +382,7 @@ function checkAnswer() {
             if (needed) {
                 // Correctly answered
                 //selectedCorrect.push(options[option]);
-                var correct = document.createElement("img");
+                let correct = document.createElement("img");
                 correct.classList.add('correcticon')
                 correct.src = "./images/correct.svg";
                 correct.alt = "green tick";
@@ -326,7 +390,7 @@ function checkAnswer() {
             } else {
                 // Incorrectly answered
                 //selectedIncorrect.push(options[option]);
-                var incorrect = document.createElement("img");
+                let incorrect = document.createElement("img");
                 incorrect.classList.add('correcticon')
                 incorrect.src = "./images/incorrect.svg";
                 incorrect.alt = "red cross";
@@ -336,7 +400,7 @@ function checkAnswer() {
             if (needed) {
                 // Incorrectly ignored
                 //unselectedIncorrect.push(options[option]);
-                var incorrect = document.createElement("img");
+                let incorrect = document.createElement("img");
                 incorrect.classList.add('correcticon')
                 incorrect.src = "./images/incorrect.svg";
                 incorrect.alt = "red cross";
@@ -348,17 +412,40 @@ function checkAnswer() {
     submitBtn.innerText = "Next Round";
 }
 
+// Random class based on level
+function determineClass() {
+    // Establish bracketS
+    let levelBracketSize = 10;
+    let levelBracket = Math.floor(level/levelBracketSize);
+    let maxclass = levelBracket+2;
+    // Choose random class within bracket
+    let classNumber = Math.floor(Math.random()*maxclass);
+    // Return class
+    switch (classNumber) {
+        case 0: return "noun";
+        case 1: return "verb";
+        case 2: return "adjective";
+    }
+}
+
 // Generate Question
 function generateQuestion() {
-    let blacklistResetPoint = content.length-Math.floor(content.length/3)
+    let currentClass = determineClass();
+
+    // Clear end of blacklist
+    let blacklistResetPoint = currentClass.length-Math.floor(currentClass.length/3)
     if (blacklist.length > blacklistResetPoint) blacklist.shift();
-    let randQn = Math.floor(Math.random() * content.length);
-    for (i=0; i<blacklist.length; i++) { // Go through blacklist
-        console.log(`i=${i}`)
-        if (blacklist[i] === randQn) { // Repeat Question
-            console.log(`${blacklist[i]} === ${randQn}`)
+    // Random question number in array of current class
+    let currentQuestion = Math.floor(Math.random() * currentClass.length);
+    // Repeat this function inside itself until we have a question that is not in the blacklist
+    for (i=0; i<blacklist.length; i++) {
+        console.log(currentClass)
+        console.log(content[currentClass])
+        console.log(content[currentClass][currentQuestion])
+        console.log(content[currentClass][currentQuestion].term)
+        if (blacklist[i] === content[currentClass][currentQuestion].term) {
             return generateQuestion();
         }
     }
-    return randQn;
+    return content[String(currentClass)][currentQuestion];
 }
