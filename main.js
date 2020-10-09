@@ -441,7 +441,7 @@ const submitBtn = gameArea.querySelector('.gamearea__submit');
 
 // Initialise variables
 var blacklist = [];
-var level = 70;
+var level = 1;
 
 // Option Selection Setup
 for(let option = 0; option < options.length; option++) {
