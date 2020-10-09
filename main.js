@@ -222,7 +222,6 @@ const content = {
                 `They will ${op}achieve${cl} their best`, `They ${op}achieved${cl} so much more`, `I ${op}achieved${cl}`
             ],
         },
-        
         {
             term: "Avoid",
             class: "Verb",
@@ -236,8 +235,7 @@ const content = {
             sentences: [
                 `She will ${op}blacken${cl} the wall with paint`, `They ${op}blacken${cl} her reputation`, `It will ${op}blacken${cl} during nightfall`
             ],
-        },
-        
+        }, 
         {
             term: "Eat",
             class: "Verb",
@@ -363,8 +361,6 @@ function submit() {
 
 // Start Game
 function startGame() {
-    var blacklist = [];
-    var level = 1;
     loadRound();
 }
 
@@ -471,13 +467,13 @@ function generateQuestion() {
         case 1: currentClass = "verb"; break;
         case 2: currentClass = "adjective"; break;
     }
-    
 
     // Clear end of blacklist
     let blacklistResetPoint = currentClass.length-Math.floor(currentClass.length/3)
     if (blacklist.length > blacklistResetPoint) blacklist.shift();
     // Random question number in array of current class
-    let currentQuestion = Math.round(Math.random() * currentClass.length);
+    let currentQuestion = Math.round(Math.random() * content[currentClass].length);
+    
     // Repeat this function inside itself until we have a question that is not in the blacklist
     for (i=0; i<blacklist.length; i++) {
         if (blacklist[i] === content[currentClass][currentQuestion].term) {
