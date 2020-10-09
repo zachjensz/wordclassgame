@@ -28,7 +28,7 @@ const content = {
             term: "Burrito",
             class: "Noun",
             sentences: [
-                `The mexican chld ate a ${op}burrito${cl}`, `All the ${op}burritos${cl} are five dollars sir`, `This ${op}burrito${cl} consists of a tortilla folded over a filling of ground beef, grated cheese, and vegetables.`, `${op}Burritos${cl} are a delicious food`
+                `The mexican child ate a ${op}burrito${cl}`, `All the ${op}burritos${cl} are five dollars sir`, `This ${op}burrito${cl} consists of a tortilla folded over a filling of ground beef, grated cheese, and vegetables.`, `${op}Burritos${cl} are a delicious food`
             ],
         },
         {
@@ -312,18 +312,125 @@ const content = {
             term: "Most (Adjective)",
             class: "Adjective",
             sentences: [
-                `This is the ${op}most${cl} ridiculous looking design`, `This is the ${op}most${cl} lovable cat`
+                `Person with the ${op}most${cl} snails`, `${op}Most${cl} businesses focus on making a profit.`
+            ],
+        },
+    ],
+    adverb: [
+        {
+            term: "Most (Adverb)",
+            class: "Adverb",
+            sentences: [
+                `This is the ${op}most${cl} ridiculous looking design`, `This is the ${op}most${cl} lovable cat`, `This is the ${op}most${cl} rapid river`
+            ],
+        },
+    ],
+    pronoun: [
+        {
+            term: "I",
+            class: "Pronoun",
+            sentences: [
+                `${op}I${cl} just love how she balances those fruit`, `${op}I${cl} am fascinated by bullet trains`, `You and ${op}I${cl} will get along just fine`
             ],
         },
         {
-            term: "Most (Adjective)",
-            class: "Adjective",
+            term: "We",
+            class: "Pronoun",
             sentences: [
-                `This is the ${op}most${cl} ridiculous looking design`, `This is the ${op}most${cl} lovable cat`
+                `${op}We${cl} love the Shawshank Redemption`, `${op}We${cl} have decided on this`, `You did say ${op}we${cl} could`
+            ],
+        },
+        {
+            term: "You",
+            class: "Pronoun",
+            sentences: [
+                `${op}You${cl} dislike zucchini don't you`, `${op}You${cl} should try this new restaurant`, `I realise now that ${op}you${cl} like strawberries`
+            ],
+        },
+        {
+            term: "He",
+            class: "Pronoun",
+            sentences: [
+                `${op}He${cl} loves fruit`, `${op}He${cl} is fascinated by trains`, `You and ${op}Him${cl} will get along just fine`
+            ],
+        },
+        {
+            term: "She",
+            class: "Pronoun",
+            sentences: [
+                `${op}She${cl} dislikes prawns`, `${op}She${cl} looked really good in those`, `I think that ${op}she${cl} just hates seafood`
+            ],
+        },
+        {
+            term: "They",
+            class: "Pronoun",
+            sentences: [
+                `${op}They${cl} started firing everyone`, `${op}They${cl} would often fight`, `You and ${op}them${cl} over there`
+            ],
+        },
+    ],
+    preposition: [
+        {
+            term: "Into",
+            class: "Preposition",
+            sentences: [
+                `The turkey went ${op}into${cl} the room`, `Richard Browning is ${op}into${cl} personal jet suits`, `You could be ${op}into${cl} trouble if you stop playing`
+            ],
+        },
+    ]
+    ,
+    conjunction: [
+        {
+            term: "Or",
+            class: "Conjunction",
+            sentences: [
+                `I will have orange ${op}or${cl} lemon`, `You can have a bike ${op}or${cl} an Xbox`, `It is either one ${op}or${cl} the other`
+            ],
+        },
+    ]
+    ,
+    determiner: [
+        {
+            term: "The",
+            class: "Determiner",
+            sentences: [
+                `${op}The${cl} pineapple is spiky`, `I want ${op}the${cl} red one`, `You are ${op}the${cl} best for playing this game`
+            ],
+        },
+        {
+            term: "A",
+            class: "Determiner",
+            sentences: [
+                `${op}A${cl} pineapple can be really spiky`, `${op}A${cl} red one is what I want`, `You are ${op}a${cl} legend for playing`
+            ],
+        },
+    ]
+    ,
+    interjection: [
+        {
+            term: "Wow",
+            class: "Interjection",
+            sentences: [
+                `${op}Wow${cl}! you're good at this`, `${op}Wow${cl}! up to Interjections already`, `Just, ${op}wow${cl}! Thanks for playing this far `
+            ],
+        },
+        {
+            term: "Oh my god",
+            class: "Interjection",
+            sentences: [
+                `${op}Oh my god${cl}! The fire extinguisher is on fire`, `${op}Oh my god${cl}! There's a unicorn over there`, `He said it to me last ni... ${op}Oh my god${cl}`
+            ],
+        },
+        {
+            term: "Look",
+            class: "Interjection",
+            sentences: [
+                `${op}Look${cl}, an intoxicated sperm whale`, `${op}Look${cl} - over there`, `Just a moment ago, it wa.. ${op}look${cl}!`
             ],
         },
     ]
 }
+const levelBracketSize = 10;
 
 // Retrieve Elements
 const gameArea = document.querySelector('.gamearea');
@@ -334,7 +441,7 @@ const submitBtn = gameArea.querySelector('.gamearea__submit');
 
 // Initialise variables
 var blacklist = [];
-var level = 1;
+var level = 70;
 
 // Option Selection Setup
 for(let option = 0; option < options.length; option++) {
@@ -342,7 +449,6 @@ for(let option = 0; option < options.length; option++) {
         options[option].classList.toggle('option--selected');
         if (submitBtn.style.display === "none") { // Not answered yet
             checkAnswer();
-            console.log('checkAnswer();')
         }
     });
 }
@@ -409,7 +515,8 @@ function checkAnswer() {
         if (selected) {
             if (needed) {
                 // Correctly answered
-                level += 0.1;
+                level += 1;
+                //console.log('lv'+level)
                 gameArea.style.background = 'var(--greenFlash)';
                 gameArea.style.transition = 'background-color 0.5s ease-in';
                 let correct = document.createElement("img");
@@ -420,6 +527,7 @@ function checkAnswer() {
             } else {
                 // Incorrectly answered
                 level -= 0.02;
+                //console.log('lv'+level)
                 gameArea.style.background = 'var(--redFlash)';
                 gameArea.style.transition = 'background-color 0.5s ease-in';
                 let incorrect = document.createElement("img");
@@ -432,6 +540,7 @@ function checkAnswer() {
             if (needed) {
                 // Incorrectly ignored
                 level -= 0.01;
+                //console.log('lv'+level)
                 gameArea.style.background = 'var(--redFlash)';
                 gameArea.style.transition = 'background-color 0.5s ease-in';
                 let incorrect = document.createElement("img");
@@ -447,36 +556,51 @@ function checkAnswer() {
     submitBtn.innerText = "Next Round";
 }
 
-// Random class based on level
-function determineClass() {
-    
+// Class Number To Class
+function classnumberToClass(number) {
+    switch (number) {
+        case 0: return("noun");
+        case 1: return("verb");
+        case 2: return("adjective");
+        case 3: return("adverb");
+        case 4: return("pronoun");
+        case 5: return("preposition");
+        case 6: return("conjunction");
+        case 7: return("determiner");
+        case 8: return("interjection");
+        default: return("interjection")
+    }
+}
+
+// Update Options
+function updateOptions() {
+    let bracket = Math.ceil(level/levelBracketSize)
+    for(i=0;i<=bracket;i++) {
+        gameArea.querySelector("#" + classnumberToClass(i)).classList.remove("option--hidden");
+    }
 }
 
 // Generate Question
 function generateQuestion() {
+    // Update Options to current class bracket
+    updateOptions()
     // Establish bracket
-    let currentClass = determineClass();
-    let levelBracketSize = 10;
-    let levelBracket = Math.floor(level/levelBracketSize);
-    let maxclass = levelBracket+1;
+    let currentClass = "interjection";
+    let levelBracket = Math.ceil(level/levelBracketSize);
     // Choose random class within bracket
-    let classNumber = Math.round(Math.random()*maxclass);
+    let classNumber = Math.round(Math.random()*levelBracket);
     // Return class
-    switch (classNumber) {
-        case 0: currentClass = "noun"; break;
-        case 1: currentClass = "verb"; break;
-        case 2: currentClass = "adjective"; break;
-    }
+    currentClass = classnumberToClass(classNumber);
 
     // Clear end of blacklist
     let blacklistResetPoint = currentClass.length-Math.floor(currentClass.length/3)
     if (blacklist.length > blacklistResetPoint) blacklist.shift();
     // Random question number in array of current class
-    let currentQuestion = Math.round(Math.random() * content[currentClass].length);
+    let currentQuestion = Math.floor(Math.random() * content[String(currentClass)].length);
     
     // Repeat this function inside itself until we have a question that is not in the blacklist
     for (i=0; i<blacklist.length; i++) {
-        if (blacklist[i] === content[currentClass][currentQuestion].term) {
+        if (blacklist[i] === content[String(currentClass)][currentQuestion]["term"]) {
             return generateQuestion();
         }
     }
