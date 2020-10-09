@@ -1,4 +1,4 @@
-// Initialise variables
+// Initialise content
 const op = `<span class="term">`;
 const cl = `</span>`;
 const content = {
@@ -302,9 +302,30 @@ const content = {
             ],
         }
     ],
+    adjective: [
+        {
+            term: "Old (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `The ${op}old${cl} ship was falling apart`, `My turtle is an ${op}old${cl} sulcata`
+            ],
+        },
+        {
+            term: "Most (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `This is the ${op}most${cl} ridiculous looking design`, `This is the ${op}most${cl} lovable cat`
+            ],
+        },
+        {
+            term: "Most (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `This is the ${op}most${cl} ridiculous looking design`, `This is the ${op}most${cl} lovable cat`
+            ],
+        },
+    ]
 }
-const blacklist = [];
-const level = 1;
 
 // Retrieve Elements
 const gameArea = document.querySelector('.gamearea');
@@ -313,11 +334,18 @@ const answer = gameArea.querySelector('.gamearea__answer');
 const options = gameArea.querySelectorAll('.option');
 const submitBtn = gameArea.querySelector('.gamearea__submit');
 
+// Initialise variables
+var blacklist = [];
+var level = 1;
+
 // Option Selection Setup
 for(let option = 0; option < options.length; option++) {
     options[option].addEventListener('click', (e) => {
         options[option].classList.toggle('option--selected');
-        checkAnswer();
+        if (submitBtn.style.display === "none") { // Not answered yet
+            checkAnswer();
+            console.log('checkAnswer();')
+        }
     });
 }
 
@@ -328,18 +356,23 @@ submitBtn.addEventListener('click', submit);
 function submit() {
     if (submitBtn.innerText === "Start Game") {
         startGame();
-    } else { // Next Round
+    } else if (submitBtn.innerText === "Next Round") { // Next Round
         loadRound();
     }
 }
 
 // Start Game
 function startGame() {
+    var blacklist = [];
+    var level = 1;
     loadRound();
 }
 
 // Load Round
 function loadRound() {
+    // Reset background fade
+    gameArea.style.background = 'var(--white)';
+    gameArea.style.transition = 'background-color 0.5s ease-out';
     // Remove correcticons (ticks and crosses)
     let correcticons = gameArea.querySelectorAll('.correcticon')
     for(i=0; i < correcticons.length; i++) {
@@ -356,7 +389,7 @@ function loadRound() {
     document.querySelector('.gamearea__correctClass').innerText = currentQuestion.class;
     let sentenceNo = Math.floor(Math.random() * currentQuestion.sentences.length)
     term.innerHTML = currentQuestion.sentences[sentenceNo];
-    submitBtn.innerText = "Done";
+    submitBtn.style.display = "none";
     // Blacklist question temporarily
     blacklist.push(currentQuestion.term)
 }
@@ -380,7 +413,9 @@ function checkAnswer() {
         if (selected) {
             if (needed) {
                 // Correctly answered
-                //selectedCorrect.push(options[option]);
+                level += 0.1;
+                gameArea.style.background = 'var(--greenFlash)';
+                gameArea.style.transition = 'background-color 0.5s ease-in';
                 let correct = document.createElement("img");
                 correct.classList.add('correcticon')
                 correct.src = "./images/correct.svg";
@@ -388,7 +423,9 @@ function checkAnswer() {
                 options[option].appendChild(correct);
             } else {
                 // Incorrectly answered
-                //selectedIncorrect.push(options[option]);
+                level -= 0.02;
+                gameArea.style.background = 'var(--redFlash)';
+                gameArea.style.transition = 'background-color 0.5s ease-in';
                 let incorrect = document.createElement("img");
                 incorrect.classList.add('correcticon')
                 incorrect.src = "./images/incorrect.svg";
@@ -398,7 +435,9 @@ function checkAnswer() {
         } else {
             if (needed) {
                 // Incorrectly ignored
-                //unselectedIncorrect.push(options[option]);
+                level -= 0.01;
+                gameArea.style.background = 'var(--redFlash)';
+                gameArea.style.transition = 'background-color 0.5s ease-in';
                 let incorrect = document.createElement("img");
                 incorrect.classList.add('correcticon')
                 incorrect.src = "./images/incorrect.svg";
@@ -408,40 +447,39 @@ function checkAnswer() {
         }
     }
     // Finalise
+    submitBtn.style.display = "block";
     submitBtn.innerText = "Next Round";
 }
 
 // Random class based on level
 function determineClass() {
-    // Establish bracketS
-    let levelBracketSize = 10;
-    let levelBracket = Math.floor(level/levelBracketSize);
-    let maxclass = levelBracket+2;
-    // Choose random class within bracket
-    let classNumber = Math.floor(Math.random()*maxclass);
-    // Return class
-    switch (classNumber) {
-        case 0: return "noun";
-        case 1: return "verb";
-        case 2: return "adjective";
-    }
+    
 }
 
 // Generate Question
 function generateQuestion() {
+    // Establish bracket
     let currentClass = determineClass();
+    let levelBracketSize = 10;
+    let levelBracket = Math.floor(level/levelBracketSize);
+    let maxclass = levelBracket+1;
+    // Choose random class within bracket
+    let classNumber = Math.round(Math.random()*maxclass);
+    // Return class
+    switch (classNumber) {
+        case 0: currentClass = "noun"; break;
+        case 1: currentClass = "verb"; break;
+        case 2: currentClass = "adjective"; break;
+    }
+    
 
     // Clear end of blacklist
     let blacklistResetPoint = currentClass.length-Math.floor(currentClass.length/3)
     if (blacklist.length > blacklistResetPoint) blacklist.shift();
     // Random question number in array of current class
-    let currentQuestion = Math.floor(Math.random() * currentClass.length);
+    let currentQuestion = Math.round(Math.random() * currentClass.length);
     // Repeat this function inside itself until we have a question that is not in the blacklist
     for (i=0; i<blacklist.length; i++) {
-        console.log(currentClass)
-        console.log(content[currentClass])
-        console.log(content[currentClass][currentQuestion])
-        console.log(content[currentClass][currentQuestion].term)
         if (blacklist[i] === content[currentClass][currentQuestion].term) {
             return generateQuestion();
         }
