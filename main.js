@@ -315,6 +315,34 @@ const content = {
                 `Person with the ${op}most${cl} snails`, `${op}Most${cl} businesses focus on making a profit.`
             ],
         },
+        {
+            term: "Beautiful (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `They live in a ${op}beautiful${cl} house`, `This is a ${op}beautiful${cl} view.`
+            ],
+        },
+        {
+            term: "Meaningless (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `This person writes ${op}meaningless${cl} letters`, `Most meetings are ${op}meaningless${cl}.`
+            ],
+        },
+        {
+            term: "Nicer (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `She is ${op}nicer${cl} to all the monkeys`, `${op}Nicer${cl} people make the world better.`
+            ],
+        },
+        {
+            term: "Gorgeous (Adjective)",
+            class: "Adjective",
+            sentences: [
+                `Their cat is ${op}gorgeous${cl}`, `${op}Gorgeous${cl} hair on them.`
+            ],
+        },
     ],
     adverb: [
         {
@@ -438,6 +466,7 @@ const term = gameArea.querySelector('.gamearea__term');
 const answer = gameArea.querySelector('.gamearea__answer');
 const options = gameArea.querySelectorAll('.option');
 const submitBtn = gameArea.querySelector('.gamearea__submit');
+const levelDisplay = gameArea.querySelector('.gamearea__levelDisplay');
 
 // Initialise variables
 var blacklist = [];
@@ -516,7 +545,7 @@ function checkAnswer() {
             if (needed) {
                 // Correctly answered
                 level += 1;
-                //console.log('lv'+level)
+                levelDisplay.innerText = Math.ceil(level);
                 gameArea.style.background = 'var(--greenFlash)';
                 gameArea.style.transition = 'background-color 0.5s ease-in';
                 let correct = document.createElement("img");
@@ -526,8 +555,6 @@ function checkAnswer() {
                 options[option].appendChild(correct);
             } else {
                 // Incorrectly answered
-                level -= 0.02;
-                //console.log('lv'+level)
                 gameArea.style.background = 'var(--redFlash)';
                 gameArea.style.transition = 'background-color 0.5s ease-in';
                 let incorrect = document.createElement("img");
@@ -539,8 +566,6 @@ function checkAnswer() {
         } else {
             if (needed) {
                 // Incorrectly ignored
-                level -= 0.01;
-                //console.log('lv'+level)
                 gameArea.style.background = 'var(--redFlash)';
                 gameArea.style.transition = 'background-color 0.5s ease-in';
                 let incorrect = document.createElement("img");
