@@ -4,13 +4,6 @@ const cl = `</span>`;
 const content = {
     noun: [
         {
-            term: "Jessica Bishop",
-            class: "Noun",
-            sentences: [
-                `${op}Jessica Bishop${cl} is an excellent teacher`
-            ],
-        },
-        {
             term: "Teacher",
             class: "Noun",
             sentences: [
