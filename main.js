@@ -25,13 +25,6 @@ const content = {
             ],
         },
         {
-            term: "Norwood Secondary College",
-            class: "Noun",
-            sentences: [
-                `I go to ${op}Norwood Secondary College${cl}`, `${op}Norwood Secondary College${cl} is a public secondary school in Ringwood North`
-            ],
-        },
-        {
             term: "Watermelon",
             class: "Noun",
             sentences: [
