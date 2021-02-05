@@ -275,7 +275,7 @@ const content = {
             term: "Stop (verb)",
             class: "Verb",
             sentences: [
-                `Please ${op}stop${cl} puring cranberry juice on the baby`, `Put a ${op}stop${cl} to Climate Change`
+                `Please ${op}stop${cl} puring cranberry juice on the baby`, `Please ${op}stop${cl} Climate Change`
             ],
         },
         {
