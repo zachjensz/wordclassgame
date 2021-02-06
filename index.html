@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/icon.png" type="image/png" sizes="64x64">
-    <link rel="stylesheet" href="default.css">
-    <title>Word Class Game by Zach Jensz</title>
-</head>
-<body>
-    <h1>Word Class Game</h1>
-    <h4>By Zach Jensz</h4>
-    <div class="gamearea">
-        <p class="gamearea__correctClass"></p>
-        <p class="gamearea__levelDisplay">1</p>
-        <h3 class="gamearea__term">Click button to start</h3>
-        <ul class="gamearea__options">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            href="./images/icon.png"
+            type="image/png"
+            sizes="64x64"
+        />
+        <link rel="stylesheet" href="default.css" />
+        <script src="main.js" defer></script>
+        <title>Word Class Game by Zach Jensz</title>
+    </head>
+    <body>
+        <p class="level">1</p>
+        <p class="answer hidden"></p>
+        <header class="info">
+            <h1>Word Class Game</h1>
+            <h4>By Zach Jensz</h4>
+        </header>
+        <section class="main-term">
+            <h3 id="main-term-text">Click button to start</h3>
+        </section>
+        <ul class="options">
             <li id="noun" class="option">Noun</li>
-            <li id="commonNoun" class="option option--hidden">Common</li>
-            <li id="properNoun" class="option option--hidden">Proper</li>
-            <li id="concreteNoun" class="option option--hidden">Concrete</li>
-            <li id="abstractNoun" class="option option--hidden">Abstract</li>
-            <li id="collectiveNoun" class="option option--hidden">Collective</li>
-            <li id="countNoun" class="option option--hidden">Count</li>
-            <li id="massNoun" class="option option--hidden">Mass</li>
-
             <li id="verb" class="option">Verb</li>
-            <li id="mainVerb" class="option option--hidden">Main</li>
-            <li id="auxiliaryVerb" class="option option--hidden">Auxiliary</li>
-            <li id="modalVerb" class="option option--hidden">Modal</li>
-            <li id="stativeVerb" class="option option--hidden">Stative</li>
-            <li id="dynamicVerb" class="option option--hidden">Dynamic</li>
-            <li id="transitiveVerb" class="option option--hidden">Transitive</li>
-            <li id="intransitiveVerb" class="option option--hidden">Intransitive</li>
-            <li id="copulaVerb" class="option option--hidden">Copula</li>
-            <li id="finiteVerb" class="option option--hidden">Finite</li>
-            <li id="nonfiniteVerb" class="option option--hidden">Non-Finite</li>
-            <li id="tenseVerb" class="option option--hidden">Tense</li>
-            <li id="aspectVerb" class="option option--hidden">Aspect</li>
-
-            <li id="adjective" class="option option--hidden">Adjective</li>
-
-            <li id="adverb" class="option option--hidden">Adverb</li>
-
-            <li id="pronoun" class="option option--hidden">Pronoun</li>
-
-            <li id="preposition" class="option option--hidden">Preposition</li>
-
-            <li id="conjunction" class="option option--hidden">Conjunction</li>
-
-            <li id="determiner" class="option option--hidden">Determiner</li>
-
-            <li id="interjection" class="option option--hidden">Interjection</li>
+            <li id="adjective" class="option hidden">Adjective</li>
+            <li id="adverb" class="option hidden">Adverb</li>
+            <li id="pronoun" class="option hidden">Pronoun</li>
+            <li id="preposition" class="option hidden">Preposition</li>
+            <li id="conjunction" class="option hidden">Conjunction</li>
+            <li id="determiner" class="option hidden">Determiner</li>
+            <li id="interjection" class="option hidden">Interjection</li>
         </ul>
-        <button class="gamearea__submit">Start Game</button>
-    </div>
-
-    <script src="main.js"></script>
-</body>
+        <button id="submit-button">Start Game</button>
+    </body>
 </html>

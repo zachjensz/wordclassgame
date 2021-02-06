@@ -7,80 +7,52 @@
     --dark: #444;
     --black: #0a0a0a;
 
-    --greenFlash: rgba(0,255,0,0.2);
-    --redFlash: rgba(255,0,0,0.2);
+    --greenFlash: rgba(0, 255, 0, 0.2);
+    --redFlash: rgba(255, 0, 0, 0.2);
 
-    --red: #EE4646;
-    --orange: #FF9E11;
+    --red: #ee4646;
+    --orange: #ff9e11;
     --yellow: #ffea00;
-    --green: #08D521;
-    --teal: #0CE5DF;
+    --green: #08d521;
+    --teal: #0ce5df;
     --blue: #4470ff;
     --violet: #9860ff;
     --purple: #d13bff;
     --pink: #ff41c0;
 
+    --termPadding: 0.2em 0.4em;
+    --termPaddingHover: 0.25em 0.5em;
+    --termPaddingSelected: 0.3em 0.6em;
+    --termMargin: 0.2em;
 
-    --optionPadding: 0.4rem;
-    --optionPaddingHover: 0.5rem;
-    --optionPaddingSelected: 0.7rem;
-
-    --lightT: rgba(255,255,255,0.5);
-    --grayT: rgba(130,130,130,0.5);
-    --darkT: rgba(0,0,0,0.5);
+    --lightT: rgba(255, 255, 255, 0.5);
+    --grayT: rgba(130, 130, 130, 0.5);
+    --darkT: rgba(0, 0, 0, 0.5);
 }
 
+html {
+    background-color: var(--light);
+    font-family: 'Nunito', sans-serif;
+}
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+    font-size: 300%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    animation-duration: 1s;
+}
 * {
+    text-align: center;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-html {
-    background-color: var(--light);
-    color: var(--dark);
-    font-family: 'Nunito', sans-serif;
-    font-size: 100%;
-}
-@media only screen and (min-width: 60ch) {
-    html {
-        font-size: 130%;
-    }
-}
-@media only screen and (min-width: 120ch) {
-    html {
-        font-size: 180%;
-    }
-}
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-}
 
-.gamearea {
-    background-color: var(--white);
-    width: 100%;
-    min-height: max(30ch, 70vh);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0.8rem 0.8rem 0.6rem 0.2rem var(--gray);
-    animation-duration: 1s;
-
-    user-select: none; /* Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-   -moz-user-select: none; /* Firefox */
-   -ms-user-select: none; /* Internet Explorer/Edge */
-
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-.gamearea__correctClass {
-    display: none;
-}
-.gamearea__levelDisplay {
+.level {
     background-color: var(--gray);
     color: var(--white);
     width: 4rem;
@@ -89,58 +61,57 @@ h1, h2, h3, h4, h5, h6 {
     top: 1rem;
     right: 1rem;
     font-size: 3rem;
-    border-radius: 1000rem;
-    text-align: center;
+    border-radius: 999em;
+    user-select: none;
 }
-.gamearea__term {
-    /*width: 20ch;*/
-    font-size: 2rem;
+.main-term {
+    font-size: 120%;
     border-bottom: 2px solid var(--light);
+    user-select: none;
 }
-.gamearea__options {
-    font-size: 1.5rem;
-
+.options {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
 }
-.gamearea__submit {
+#submit-button {
     background-color: var(--dark);
     color: var(--light);
-    font-size: 1.5rem;
-    padding: 0.8rem 3.2rem;
+    font-size: 100%;
+    padding: 0.8em 3.2em;
+    margin: 0.8em;
     border: none;
-    border-radius: 1000rem;
-    box-shadow: 0.4rem 0.4rem 0.3rem 0.2rem var(--grayT);
+    border-radius: 999em;
+    box-shadow: 0.4em 0.4em 0.3em 0.2em var(--grayT);
 }
-.gamearea__submit:hover {
+#submit-button:hover {
     background-color: var(--light);
     color: var(--black);
     cursor: pointer;
 }
-
 .option {
     background-color: var(--light);
     color: var(--dark);
-    border-radius: 1000rem;
+    border-radius: 999em;
     list-style: none;
-    padding: var(--optionPadding);
-    margin: 0.2rem;
+    padding: var(--termPadding);
+    margin: var(--termMargin);
+    user-select: none;
+    box-shadow: 0.2em 0.2em 0.2em 0.1em var(--grayT);
 }
-.option--selected {
+.option-selected {
     color: var(--black);
     font-weight: 700;
-    padding: var(--optionPaddingSelected) !important;
+    padding: var(--termPaddingSelected) !important;
 }
 .option:hover {
     cursor: pointer;
-    padding: var(--optionPaddingHover);
+    padding: var(--termPaddingHover);
 }
-.option--hidden {
+.hidden {
     display: none;
 }
-
 .correcticon {
     position: relative;
     margin: auto;
@@ -151,8 +122,8 @@ h1, h2, h3, h4, h5, h6 {
 .term {
     background-color: var(--dark);
     color: var(--light);
-    padding: 0.4rem;
-    border-radius: 1000rem;
+    padding: var(--termPadding);
+    border-radius: 999em;
     font-weight: 800;
 }
 #noun {
