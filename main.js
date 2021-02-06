@@ -518,6 +518,7 @@ const levelBracketSize = 10
 
 // Retrieve Elements
 const levelDisplay = document.querySelector('.level')
+const flash = document.querySelector('.flash')
 const term = document.querySelector('#main-term-text')
 const answer = document.querySelector('.answer')
 const options = document.querySelectorAll('.option')
@@ -546,8 +547,7 @@ submitBtn.addEventListener('click', (e) => {
 // Load Round
 function loadRound() {
     // Reset background fade
-    document.body.style.background = 'var(--white)'
-    document.body.style.transition = 'background-color 0.5s ease-out'
+    flash.style.opacity = 0
     // Remove correcticons (ticks and crosses)
     let correcticons = document.querySelectorAll('.correcticon')
     for (i = 0; i < correcticons.length; i++) {
@@ -591,9 +591,8 @@ function checkAnswer() {
                 // Correctly answered
                 level += 1
                 levelDisplay.innerText = Math.ceil(level)
-                document.body.style.background = 'var(--greenFlash)'
-                document.body.style.transition =
-                    'background-color 0.1s ease-out'
+                flash.style.background = 'var(--greenFlash)'
+                flash.style.opacity = 1
                 let correct = document.createElement('img')
                 correct.classList.add('correcticon')
                 correct.src = './images/correct.svg'
@@ -601,9 +600,8 @@ function checkAnswer() {
                 options[option].appendChild(correct)
             } else {
                 // Incorrectly answered
-                document.body.style.background = 'var(--redFlash)'
-                document.body.style.transition =
-                    'background-color 0.1s ease-out'
+                flash.style.background = 'var(--redFlash)'
+                flash.style.opacity = 1
                 let incorrect = document.createElement('img')
                 incorrect.classList.add('correcticon')
                 incorrect.src = './images/incorrect.svg'
@@ -613,9 +611,8 @@ function checkAnswer() {
         } else {
             if (needed) {
                 // Incorrectly ignored
-                document.body.style.background = 'var(--redFlash)'
-                document.body.style.transition =
-                    'background-color 0.1s ease-out'
+                flash.style.background = 'var(--redFlash)'
+                flash.style.opacity = 1
                 let incorrect = document.createElement('img')
                 incorrect.classList.add('correcticon')
                 incorrect.src = './images/incorrect.svg'
