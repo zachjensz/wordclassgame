@@ -19,9 +19,9 @@
     --purple: #d13bff;
     --pink: #ff41c0;
 
-    --termPadding: 0.2em 0.4em;
-    --termPaddingHover: 0.25em 0.5em;
-    --termPaddingSelected: 0.3em 0.6em;
+    --termPadding: 0.3em 1.6em;
+    --termPaddingHover: 0.32em 1.8em;
+    --termPaddingSelected: 0.34em 2em;
     --termMargin: 0.2em;
 }
 @media (prefers-color-scheme: dark) {
