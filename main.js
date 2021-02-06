@@ -593,7 +593,7 @@ function checkAnswer() {
                 levelDisplay.innerText = Math.ceil(level)
                 document.body.style.background = 'var(--greenFlash)'
                 document.body.style.transition =
-                    'background-color 0.5s ease-out'
+                    'background-color 0.1s ease-out'
                 let correct = document.createElement('img')
                 correct.classList.add('correcticon')
                 correct.src = './images/correct.svg'
@@ -603,7 +603,7 @@ function checkAnswer() {
                 // Incorrectly answered
                 document.body.style.background = 'var(--redFlash)'
                 document.body.style.transition =
-                    'background-color 0.5s ease-out'
+                    'background-color 0.1s ease-out'
                 let incorrect = document.createElement('img')
                 incorrect.classList.add('correcticon')
                 incorrect.src = './images/incorrect.svg'
@@ -615,7 +615,7 @@ function checkAnswer() {
                 // Incorrectly ignored
                 document.body.style.background = 'var(--redFlash)'
                 document.body.style.transition =
-                    'background-color 0.5s ease-out'
+                    'background-color 0.1s ease-out'
                 let incorrect = document.createElement('img')
                 incorrect.classList.add('correcticon')
                 incorrect.src = './images/incorrect.svg'
