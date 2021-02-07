@@ -61,18 +61,21 @@ body {
     z-index: -1;
 }
 .level {
-    background-color: var(--background);
-    color: var(--strongText);
+    background-color: var(--strongText);
+    color: var(--strongBackground);
+    opacity: 0.4;
     padding: 0.1em 0.5em;
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: 0.2em;
+    right: 0.2em;
     font-size: 200%;
     border-radius: 999em;
+    z-index: -1;
     user-select: none;
 }
 .main-term {
     font-size: 120%;
+    line-height: 200%;
     border-bottom: 2px solid var(--text);
     user-select: none;
 }
